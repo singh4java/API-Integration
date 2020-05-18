@@ -1,0 +1,87 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Exchange API",
+    "description" : "This service help to get exchange rate",
+    "contact" : {
+      "name" : "Manvendra",
+      "url" : "https://github.com/singh4java",
+      "email" : "manvendra80386@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "https://swagger.io/license/"
+    },
+    "version" : "2.0.1"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:8088",
+    "description" : "Generated server url"
+  } ],
+  "paths" : {
+    "/exchange/from/{from}/to/{to}" : {
+      "get" : {
+        "tags" : [ "exchange-controller" ],
+        "operationId" : "getExchangerate",
+        "parameters" : [ {
+          "name" : "from",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "to",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "default response",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ExchangeRate"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "ExchangeRate" : {
+        "type" : "object",
+        "properties" : {
+          "exchangeId" : {
+            "type" : "string"
+          },
+          "from" : {
+            "type" : "string"
+          },
+          "to" : {
+            "type" : "string"
+          },
+          "rate" : {
+            "type" : "number"
+          }
+        },
+        "example" : {
+          "exchangeId" : "exchangeId",
+          "rate" : 0.8008281904610115,
+          "from" : "from",
+          "to" : "to"
+        }
+      }
+    }
+  }
+}
